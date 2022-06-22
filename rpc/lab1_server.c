@@ -64,11 +64,14 @@ answer *
 sort_1000_svc(params *argp, struct svc_req *rqstp)
 {
 	static answer  result;
+  printf("Server recebeu uma consulta\n");
 
 	mergeSort(argp->number, 0, ARRAY_LENGTH - 1);
 
 	result.number[0] = argp->number[0];
 	result.number[1] = argp->number[ARRAY_LENGTH - 1];
 	
+  printf("Resultados foram contabilizados\nRetornando...\n");
+  printf("----------------------------------------------\n");
 	return &result;
 }

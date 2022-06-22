@@ -34,14 +34,25 @@ void prog_1000(char *host)
 	}
 #endif	/* DEBUG */
 
-	generateRandomNumbers(sort_1000_arg.number);
+	char input[4];
+	
+	do 
+	{
+		generateRandomNumbers(sort_1000_arg.number);
 
-	result_1 = sort_1000(&sort_1000_arg, clnt);
-	if (result_1 == (answer *) NULL) {
-		clnt_perror (clnt, "call failed");
-	}
-	printf("Menor Número do Array => %.02f\n", result_1->number[0]);
-	printf("Maior Número do Array => %.02f\n", result_1->number[1]);
+		result_1 = sort_1000(&sort_1000_arg, clnt);
+		if (result_1 == (answer *) NULL) {
+			clnt_perror (clnt, "call failed");
+		}
+		printf("Menor Número do Array => %.02f\n", result_1->number[0]);
+		printf("Maior Número do Array => %.02f\n", result_1->number[1]);
+
+		printf("--------------------------------------------------------------\n");
+		printf("Deseja gerar os números novamente? [Digite \'S\' para \'SIM\']\n> ");
+		scanf(" %s", input);
+	}while (input[0] == 'S' || input[0] == 's');
+
+
 
 #ifndef	DEBUG
 	clnt_destroy (clnt);
