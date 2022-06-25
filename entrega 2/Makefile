@@ -20,8 +20,8 @@ OBJECTS_CLNT = $(SOURCES_CLNT.c:%.c=%.o) $(TARGETS_CLNT.c:%.c=%.o)
 OBJECTS_SVC = $(SOURCES_SVC.c:%.c=%.o) $(TARGETS_SVC.c:%.c=%.o)
 # Compiler flags
 
-CFLAGS += -g -I/usr/include/tirpc -lm
-LDLIBS += -lnsl -ltirpc
+CFLAGS += -g -I/usr/include/tirpc
+LDLIBS += -lm -lnsl -ltirpc
 RPCGENFLAGS =
 
 # Targets

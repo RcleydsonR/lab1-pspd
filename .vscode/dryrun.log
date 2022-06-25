@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/eduardoafonso/faculdade/pspd/lab1-pspd'
+make: Leaving directory '/home/eduardoafonso/faculdade/pspd/lab1-pspd'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
