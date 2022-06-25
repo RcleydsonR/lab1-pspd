@@ -3,8 +3,8 @@
  * It was generated using rpcgen.
  */
 
-#ifndef _LAB1_H_RPCGEN
-#define _LAB1_H_RPCGEN
+#ifndef _ENTREGA2_H_RPCGEN
+#define _ENTREGA2_H_RPCGEN
 
 #include <rpc/rpc.h>
 
@@ -21,6 +21,8 @@ typedef struct answer answer;
 
 struct params {
 	float number[500000];
+	int inicio;
+	int fim;
 };
 typedef struct params params;
 
@@ -57,4 +59,4 @@ extern bool_t xdr_params ();
 }
 #endif
 
-#endif /* !_LAB1_H_RPCGEN */
+#endif /* !_ENTREGA2_H_RPCGEN */

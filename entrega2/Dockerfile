@@ -9,5 +9,4 @@ RUN apt-get update && \
 
 WORKDIR /server
 
-COPY lab1*.c lab1.h lab1.x Makefile.other ./
-RUN mv Makefile.other Makefile
+COPY entrega2*.c entrega2.h entrega2.x Makefile ./

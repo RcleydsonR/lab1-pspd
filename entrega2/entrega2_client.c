@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-#include "lab1.h"
+#include "entrega2.h"
 
 void generateRandomNumbers(float array[], long length)
 {
@@ -20,11 +20,10 @@ void generateRandomNumbers(float array[], long length)
 	}
 }
 
-void prog_1000(char *host, int qtd, float *maxValue, float *minValue)
+void prog_1000(char *host, params sort_1000_arg, int qtd, float *maxValue, float *minValue)
 {
 	CLIENT *clnt;
 	answer *result_1;
-	params sort_1000_arg;
 
 	clnt = clnt_create(host, PROG, VERSAO, "tcp");
 	if (clnt == NULL)
@@ -32,8 +31,6 @@ void prog_1000(char *host, int qtd, float *maxValue, float *minValue)
 		clnt_pcreateerror(host);
 		exit(1);
 	}
-
-	generateRandomNumbers(sort_1000_arg.number, ARRAY_LENGTH/qtd);
 
 	result_1 = sort_1000(&sort_1000_arg, clnt);
 	if (result_1 == (answer *) NULL) {
@@ -70,17 +67,22 @@ int main(int argc, char *argv[])
 {
 	int server_quantity = verifyArg(argc, argv);
 	char *hosts[server_quantity], input[4];
+	params sort_1000_arg;
 
 
 	do
 	{
 		float maxValue = 0.0;
 		float minValue = INFINITY;
+		srand(time(0));
+		generateRandomNumbers(sort_1000_arg.number, ARRAY_LENGTH);
+
 		for (int i = 2; i < server_quantity + 2; i++)
 		{
-			srand(time(0));
 			hosts[i - 2] = argv[i];
-			prog_1000(hosts[i - 2], server_quantity, &maxValue, &minValue);
+			sort_1000_arg.inicio = (i-2)*(ARRAY_LENGTH/server_quantity);
+			sort_1000_arg.fim = sort_1000_arg.inicio+(ARRAY_LENGTH/server_quantity);
+			prog_1000(hosts[i - 2], sort_1000_arg, server_quantity, &maxValue, &minValue);
 		}
 
 		printf("Menor Número do Array => %.02f\n", minValue);

@@ -3,7 +3,7 @@
  * It was generated using rpcgen.
  */
 
-#include "lab1.h"
+#include "entrega2.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <rpc/pmap_clnt.h>

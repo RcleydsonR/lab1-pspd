@@ -4,6 +4,8 @@ struct answer {
 
 struct params {
     float number[500000];
+    int inicio;
+    int fim;
 };
 
 program PROG {

@@ -3,7 +3,7 @@
  * It was generated using rpcgen.
  */
 
-#include "lab1.h"
+#include "entrega2.h"
 
 bool_t
 xdr_answer (XDR *xdrs, answer *objp)
@@ -25,6 +25,10 @@ xdr_params (XDR *xdrs, params *objp)
 	int i;
 	 if (!xdr_vector (xdrs, (char *)objp->number, 500000,
 		sizeof (float), (xdrproc_t) xdr_float))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->inicio))
+		 return FALSE;
+	 if (!xdr_int (xdrs, &objp->fim))
 		 return FALSE;
 	return TRUE;
 }
